@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('dispatcher_id')->constrained('dispatchers')->onDelete('cascade');
             $table->foreignId('driver_id')->nullable()->constrained('drivers')->onDelete('set null');
-            $table->json('route_data');
+            $table->json('route_data')->nullable();
             $table->enum('status', ['pending', 'in_progress', 'completed', 'failed'])->default('pending');
             $table->json('proof_of_delivery')->nullable();
             $table->timestamps();

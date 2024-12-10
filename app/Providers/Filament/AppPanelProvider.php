@@ -24,6 +24,8 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
+use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -122,6 +124,8 @@ class AppPanelProvider extends PanelProvider
                     )
                     ->myProfileComponents([
                         'personal_info' => MyProfileExtended::class,
+                        'two_factor_authentication' => TwoFactorAuthentication::class,
+                        'sanctum_tokens' => SanctumTokens::class,
                     ]),
                 \Datlechin\FilamentMenuBuilder\FilamentMenuBuilderPlugin::make()
                     ->usingResource(MenuResource::class)
