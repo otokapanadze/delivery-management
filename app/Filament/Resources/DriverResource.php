@@ -18,7 +18,7 @@ class DriverResource extends Resource
     protected static ?string $model = Driver::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationGroup = 'Delivery Management';
     public static function form(Form $form): Form
     {
         return $form

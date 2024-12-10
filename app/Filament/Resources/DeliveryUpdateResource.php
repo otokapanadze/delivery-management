@@ -13,11 +13,12 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DeliveryStatusResource extends Resource
+class DeliveryUpdateResource extends Resource
 {
     protected static ?string $model = DeliveryUpdate::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Delivery Management';
 
     public static function form(Form $form): Form
     {
@@ -25,6 +26,7 @@ class DeliveryStatusResource extends Resource
             ->schema([
                 Forms\Components\Select::make('delivery_id')
                     ->relationship('delivery', 'id')
+                    ->searchable()
                     ->required()
                     ->label('Delivery'),
                 Forms\Components\TextInput::make('status')
