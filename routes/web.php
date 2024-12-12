@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('integrations')->group(function () {
+    Route::get('shopify/redirect', [\App\Http\Controllers\IntegrationController::class, 'redirectToShopify'])->name('integration.shopify.redirect');
+    Route::get('shopify/callback', [\App\Http\Controllers\IntegrationController::class, 'handleShopifyCallback'])->name('integration.shopify.callback');
+});
