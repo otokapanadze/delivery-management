@@ -46,4 +46,9 @@ class Delivery extends Model
     {
         return $this->hasMany(DeliveryUpdate::class);
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

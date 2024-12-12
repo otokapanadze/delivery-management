@@ -25,6 +25,8 @@ class DeliveryResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('dispatcher_id')
+                    ->preload()
+                    ->searchable()
                     ->relationship('dispatcher', 'name')
                     ->required(),
                 Forms\Components\Select::make('driver_id')
@@ -48,6 +50,13 @@ class DeliveryResource extends Resource
                     ->label('Proof of Delivery')
                     ->multiple()
                     ->enableDownload(),
+                Forms\Components\Select::make('order_id')
+                    ->label('Order')
+                    ->multiple()
+                    ->relationship('order', 'id')
+                    ->preload()
+                    ->searchable()
+                    ->nullable(),
             ]);
     }
 
@@ -65,6 +74,7 @@ class DeliveryResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('order.id')->label('Order ID'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
